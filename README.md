@@ -30,7 +30,7 @@ Install dependencies:
 ```bash
 pip install flask
 ```
-##▶️ How to Run
+## ▶️ How to Run
 ```bash
 python app.py
 ```
