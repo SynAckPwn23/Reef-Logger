@@ -22,3 +22,15 @@ aquarium-monitor/<br/>
 │ └── index.html # HTML template<br/>
 └── data/ # (Optional folder for future data)<br/>
 
+## ⚙️ Requirements
+- Python 3.8+
+- Flask
+
+Install dependencies:
+```bash
+pip install flask
+
+##▶️ How to Run
+python app.py
+
+The app will be available at: http://localhost:5000
