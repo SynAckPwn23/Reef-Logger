@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reef Logger</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="m-0 p-0">
+  <div id="mainContent" class="container-fluid px-3"><br>
+  <!-- Titolo principale -->
+  <h3 class="mb-4 fw-bold text-primary">📘 Parametri Acquario</h3>
+
+    <!-- Target Ideali -->
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <h5 class="text-primary fw-semibold mb-3">🎯 Valori target ideali</h5>
+        <div class="row text-center small">
+
+          <div class="col-6 col-md-3 col-lg-2 mb-2">
+            <div class="p-2 border rounded bg-light">
+              <strong>🌡 Temp</strong><br />
+              24 – 26 °C
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-2 mb-2">
+            <div class="p-2 border rounded bg-light">
+              <strong>🌊 Densità</strong><br />
+              1025 – 1026
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-2 mb-2">
+            <div class="p-2 border rounded bg-light">
+              <strong>🧪 pH</strong><br />
+              8.1 – 8.4
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-2 mb-2">
+            <div class="p-2 border rounded bg-light">
+              <strong>🧲 Mg</strong><br />
+              1250 – 1350 mg/l
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-2 mb-2">
+            <div class="p-2 border rounded bg-light">
+              <strong>🦴 Ca</strong><br />
+              400 – 450 mg/l
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-2 mb-2">
+            <div class="p-2 border rounded bg-light">
+              <strong>💧 KH</strong><br />
+              7 – 9 °dH
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-2 mb-2">
+            <div class="p-2 border rounded bg-light">
+              <strong>🌿 NO₃</strong><br />
+              1 – 5 mg/l
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-2 mb-2">
+            <div class="p-2 border rounded bg-light">
+              <strong>🟣 PO₄</strong><br />
+              0.01 – 0.03 mg/l
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Form inserimento -->
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <h5 class="card-title text-primary fw-semibold">📥 Inserisci nuova misurazione</h5>
+        <form id="paramForm" class="row g-3">
+          <div class="col-md-3">
+            <input type="datetime-local" class="form-control" id="datetime" required />
+          </div>
+          <div class="col-md-3">
+            <input type="number" step="0.1" min="0" class="form-control" id="temp" placeholder="Temp (°C)" />
+          </div>
+          <div class="col-md-3">
+            <input type="number" min="0" class="form-control" id="salinity" placeholder="Salinità (ppt)" />
+          </div>
+          <div class="col-md-3">
+            <input type="number" step="0.1" min="0" class="form-control" id="ph" placeholder="pH" />
+          </div>
+          <div class="col-md-3">
+            <input type="number" min="0" class="form-control" id="mg" placeholder="Mg (mg/l)" />
+          </div>
+          <div class="col-md-3">
+            <input type="number" min="0" class="form-control" id="ca" placeholder="Ca (mg/l)" />
+          </div>
+          <div class="col-md-3">
+            <input type="number" step="0.1" min="0" class="form-control" id="kh" placeholder="KH (°dH)" />
+          </div>
+          <div class="col-md-3">
+            <input type="number" min="0" class="form-control" id="no3" placeholder="NO3 (mg/l)" />
+          </div>
+          <div class="col-md-3">
+            <input type="number" step="0.01" min="0" class="form-control" id="po4" placeholder="PO4 (mg/l)" />
+          </div>
+          <div class="col-md-9">
+            <textarea name="note" class="form-control" id="note" placeholder="Note" rows="1"></textarea>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Inserisci</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- Stato attuale e suggerimenti -->
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <h5 class="text-primary fw-semibold mb-3" id="lastReadingTitle">📋 Misurazione più recente & suggerimenti</h5>
+        <div id="lastReadingSummary" class="row small text-center">
+          <div class="col-12 text-muted">Caricamento in corso...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Storico Dati -->
+    <h3 class="text-primary mb-4 fw-bold">📊 Storico Dati</h3>
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-hover" id="dataTable">
+           <thead class="table-dark">
+              <tr>
+                <th>📅 Data/Ora</th>
+                <th>🌡 Temp</th>
+                <th>🌊 Sal</th>
+                <th>🧪 pH</th>
+                <th>🧲 Mg</th>
+                <th>🦴 Ca</th>
+                <th>💧 KH</th>
+                <th>🌿 NO3</th>
+                <th>🟣 PO4</th>
+                <th>📝 Note</th>
+                <th>⚙️ Azione</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <hr />
+
+    <!-- Sezione Grafici -->
+    <h3 class="text-primary mb-4 fw-bold">📈 Andamento Parametri</h3>
+    <div class="">
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <div class="col-md-12">
+            <h5 class="text-center">🌡 Temperatura</h5>
+            <canvas id="chartTemp"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <div class="col-md-12">
+            <h5 class="text-center">🌊 Salinità</h5>
+            <canvas id="chartSal"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <div class="col-md-12">
+            <h5 class="text-center">🧪 pH</h5>
+            <canvas id="chartPH"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <div class="col-md-12">
+            <h5 class="text-center">🧲 Magnesio (Mg)</h5>
+            <canvas id="chartMg"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <div class="col-md-12">
+            <h5 class="text-center">🦴 Calcio (Ca)</h5>
+            <canvas id="chartCa"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <div class="col-md-12">
+            <h5 class="text-center">💧 KH</h5>
+            <canvas id="chartKh"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <div class="col-md-12">
+            <h5 class="text-center">🌿 Nitrati (NO3)</h5>
+            <canvas id="chartNo3"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <div class="col-md-12">
+            <h5 class="text-center">🟣 Fosfati (PO4)</h5>
+            <canvas id="chartPo4"></canvas>
+          </div>
+        </div>
+      </div>
+    </div> <!-- fine row -->
+  </div> <!-- fine container -->
+
+  <!-- Script -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
