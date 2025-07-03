@@ -40,5 +40,8 @@ The app will be available at: http://localhost:5000
 Measurements are saved locally in the data.json file. You can manually edit or clear this file to reset the dataset.
 
 ## 📌 Notes
-This is a local-only version; it does not use a database.
+This is a local-only version (not intended to be exposed on internet for obvious reason); it does not use a database.
 Easily extendable with authentication, database integration, REST API, advanced charting (e.g., Chart.js), etc.
+
+## 🙌 Contributions
+Pull requests, bug reports, and feature suggestions are welcome!
