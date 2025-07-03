@@ -2,7 +2,9 @@
 This is a lightweight web application built with Python Flask to help aquarium enthusiasts log, monitor, and visualize key water parameters in a marine tank such as KH, Ca, Mg, nitrates, and phosphates.
 
 ## 📸 Screenshot
-*(You can add screenshots of the UI here)*
+![Reef Image](images/1.png)
+![Reef Image](images/2.png)
+![Reef Image](images/3.png)
 
 ## 🚀 Features
 - Manual input of aquarium parameters
