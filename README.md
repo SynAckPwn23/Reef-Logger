@@ -12,4 +12,13 @@ This is a lightweight web application built with Python Flask to help aquarium e
 - Responsive UI using HTML, CSS, and JS
 
 ## 🏗️ Project Structure
+aquarium-monitor/
+├── app.py # Flask backend
+├── data.json # Local data storage
+├── static/
+│ ├── app.js # Frontend logic
+│ └── style.css # Custom styles
+├── templates/
+│ └── index.html # HTML template
+└── data/ # (Optional folder for future data)
 
