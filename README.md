@@ -51,4 +51,7 @@ This is a **local-only** version and **not intended to be exposed on the Interne
   - email alerts, threshold warnings, etc.
 
 ## 🙌 Contributions
-Pull requests, bug reports, and feature suggestions are welcome!
+This is a personal side project that I built primarily for my own use, and I may not always have time to maintain it regularly.
+
+That said, contributions are absolutely welcome!  
+If you'd like to improve the app, fix bugs, or suggest features, feel free to open an issue or submit a pull request.
