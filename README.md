@@ -40,8 +40,15 @@ The app will be available at: http://localhost:5000
 Measurements are saved locally in the data.json file. You can manually edit or clear this file to reset the dataset.
 
 ## 📌 Notes
-This is a local-only version (not intended to be exposed on internet for obvious reason); it does not use a database.
-Easily extendable with authentication, database integration, REST API, advanced charting (e.g., Chart.js), etc.
+This app was developed for **personal use** on my local network to monitor and manage my own reef aquarium.
+This is a **local-only** version and **not intended to be exposed on the Internet** for security reasons. 
+- Data is stored locally in a JSON file; no database is used.
+- The application is easily extendable with:
+  - user authentication
+  - database integration (e.g., SQLite, PostgreSQL)
+  - RESTful APIs
+  - advanced charting libraries (e.g., Chart.js)
+  - email alerts, threshold warnings, etc.
 
 ## 🙌 Contributions
 Pull requests, bug reports, and feature suggestions are welcome!
