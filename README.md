@@ -29,8 +29,9 @@ aquarium-monitor/<br/>
 Install dependencies:
 ```bash
 pip install flask
-
+```
 ##▶️ How to Run
+```bash
 python app.py
-
+```
 The app will be available at: http://localhost:5000
