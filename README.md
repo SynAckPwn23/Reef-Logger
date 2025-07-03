@@ -39,7 +39,7 @@ The app will be available at: http://localhost:5000
 Measurements are saved locally in the data.json file. You can manually edit or clear this file to reset the dataset.
 
 ## 📌 Notes
-This app was developed for **personal use** on my local network to monitor and manage my own reef aquarium.
+This app was developed for **personal use** on my local network to monitor and manage my own reef aquarium. Lang: ITA.
 This is a **local-only** version and **not intended to be exposed on the Internet** for security reasons. 
 - Data is stored locally in a JSON file; no database is used.
 - The application is easily extendable with:
